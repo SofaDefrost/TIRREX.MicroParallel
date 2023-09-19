@@ -16,7 +16,7 @@ The simulations are done using the simulation framework [SOFA](https://www.sofa-
 
 ### Optional 
 
-- SoftRobots.Inverse plugin for SOFA (private directory, ask for access or use the provided binaries instead of compiling), to solve the inverse kinematics of the robot
+- [SoftRobots.Inverse](https://github.com/SofaDefrost/SoftRobots.Inverse) plugin for SOFA to solve the inverse kinematics of the robot
 - [ROS2](https://docs.ros.org/en/humble/Installation.html) to send commands to the robot from an external program (last tested with ROS2 Humble)
 
 ## How to
@@ -24,13 +24,13 @@ The simulations are done using the simulation framework [SOFA](https://www.sofa-
 
 1. Run the simulation. In your terminal:
 ```bash
-~$ cd TIRREX/MicroParallel
-~/TIRREX/MicroParallel$ runSofa scene.py
-~/TIRREX/MicroParallel$ runSofa sceneInverseKinematics.py  # for inverse resolution
+~$ cd TIRREX.MicroParallel
+~/TIRREX.MicroParallel$ runSofa scene.py
+~/TIRREX.MicroParallel$ runSofa sceneInverseKinematics.py  # for inverse resolution
 ```
 2. To use ROS2, first source it in your terminal. For instance:
 ```bash
-~/TIRREX/MicroParallel$ source /opt/ros/humble/setup.bash
+~/TIRREX.MicroParallel$ source /opt/ros/humble/setup.bash
 ```
 
 To enable ROS, uncomment the following line in file `scene.py`:
