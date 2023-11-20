@@ -15,6 +15,7 @@ class Leg:
 
         self.params = params.LegParams()
         self.__addLeg()
+        self.__addVisu()
 
     def __addLeg(self):
         positions = list(np.copy(self.structure.dofs.position.value))
@@ -35,6 +36,15 @@ class Leg:
         self.beam.addObject('BeamInterpolation', straight=False, dofsAndBeamsAligned=False, radius=self.params.radius,
                             DOF0TransformNode0=DOF0TransformNode0,
                             defaultYoungModulus=self.params.youngModulus, defaultPoissonRatio=self.params.poissonRatio)
+
+    def __addVisu(self):
+        visu = self.beam.addChild("Visu")
+        visu.addObject("MeshOBJLoader", filename="mesh/cylinder.obj",
+                       scale3d=[1, 0.0999, 1],
+                       translation=[0.00001, 0, 0],
+                       rotation=[0, 0, -90])
+        visu.addObject("OglModel", src=visu.MeshOBJLoader.linkpath)
+        visu.addObject('AdaptiveBeamMapping', useCurvAbs=False)
 
 
 def createScene(rootnode):

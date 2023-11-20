@@ -5,7 +5,6 @@ def createScene(rootnode):
 
     settings, modelling, simulation = addHeader(rootnode)
     addSolvers(simulation)
-    rootnode.VisualStyle.displayFlags = ['showBehavior']
 
     robot = Robot(modelling, simulation)
     # Uncomment this line to enable ROS communication

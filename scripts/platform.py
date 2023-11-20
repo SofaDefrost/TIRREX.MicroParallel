@@ -12,7 +12,6 @@ class Platform:
         self.__addPlatform()
 
     def __addPlatform(self):
-
         self.platform = self.modelling.addChild(self.name)
         self.simulation.addChild(self.platform)
 
@@ -24,20 +23,20 @@ class Platform:
         dim = self.params.dim
 
         rigid = self.platform.addChild('RigidParts')
-        rigid.addObject('MechanicalObject', template='Rigid3', position=[0,0,0,0,0,0,1]*2)
+        rigid.addObject('MechanicalObject', template='Rigid3', position=[0, 0, 0, 0, 0, 0, 1] * 2)
         rigid.addObject('ArticulatedSystemMapping', container=self.platform.ArticulatedHierarchyContainer.getLinkPath(),
-                                                    input1=self.platform.MechanicalObject.getLinkPath(),
-                                                    output=rigid.MechanicalObject.getLinkPath())
+                        input1=self.platform.MechanicalObject.getLinkPath(),
+                        output=rigid.MechanicalObject.getLinkPath())
 
         centers = self.platform.addChild('ArticulationsCenters')
         center = centers.addChild('Center')
-        center.addObject('ArticulationCenter', parentIndex=0, childIndex=1, posOnParent=[dim[0]/2,0,dim[2]/2], posOnChild=[-dim[0]/2,0,-dim[2]/2], articulationProcess=0)
+        center.addObject('ArticulationCenter', parentIndex=0, childIndex=1, posOnParent=[dim[0] / 2, 0, dim[2] / 2],
+                         posOnChild=[-dim[0] / 2, 0, -dim[2] / 2], articulationProcess=0)
         articulation = center.addChild('Articulation')
-        articulation.addObject('Articulation', translation=0, rotation=1, rotationAxis=[0,0,1], articulationIndex=0)
+        articulation.addObject('Articulation', translation=0, rotation=1, rotationAxis=[0, 0, 1], articulationIndex=0)
 
 
 def createScene(rootnode):
-
     from header import addHeader, addSolvers
 
     settings, modelling, simulation = addHeader(rootnode)

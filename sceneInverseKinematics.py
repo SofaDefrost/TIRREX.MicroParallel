@@ -5,7 +5,6 @@ def createScene(rootnode):
 
     settings, modelling, simulation = addHeader(rootnode, inverse=True)
     addSolvers(simulation)
-    rootnode.VisualStyle.displayFlags = ['showForceFields']
     rootnode.gravity = [0, 9180, 0]
 
     target = modelling.addChild('Target')
