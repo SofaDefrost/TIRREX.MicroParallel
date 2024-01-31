@@ -78,8 +78,7 @@ class SofaROSInterface(Sofa.Core.Controller):
     def onAnimateBeginEvent(self, event):
 
         # Receive command from topic "/TIRREX/microparallel/interfaceData"
-        rclpy.spin_once(self.node, timeout_sec=0.001)
-        # Something must be hidden in this spin_once(), without it the callback() is never called
+        rclpy.spin_once(self.node, timeout_sec=0.001)  # Enables callbacks
         if self.dataInterface is not None:
             self.__processDataReceived()
             self.dataInterface = None
